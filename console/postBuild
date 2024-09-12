@@ -1,0 +1,5 @@
+#!/bin/bash
+git clone https://github.com/DYung26/UFH.git
+cd UFH/console
+python3 main.py
+
