@@ -1,1 +1,1 @@
-# UFH
+# Universal Finance Hub (UFH)
