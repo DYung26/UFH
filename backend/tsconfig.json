@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "esModuleInterop": true,
+        "target": "ES2020",
+        "moduleResolution": "NodeNext",
+        "sourceMap": true,
+        "outDir": "./build",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "declaration": false,
+        "allowJs": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "rootDir": "./src/",
+        "baseUrl": "./src/",
+        "paths": {
+            "@api/*": ["api/*"],
+            "@application/*": ["Application/*"],
+            "@domain/*": ["domain/*"],
+            "@infrastructure/*": ["infrastructure/*"],
+            "@main/*": ["main/*"],
+            "@types/*": ["types/*"],
+            "@utils/*": ["utils/*"],
+            "@mock/*": ["mock/*"],
+	    "@database/*": ["database/*"]
+        },
+        "typeRoots": ["./node_modules/@types"],
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+	"lib": ["es2015", "es2020"]
+    },
+    "scripts": {
+	"start": "node app.js",
+        "build": "npx tsc && npx tsc-alias"
+    },
+    "exclude": ["node_modules"],
+    "include": ["./src/**/*.ts"],
+}
