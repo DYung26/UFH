@@ -1,6 +1,7 @@
 import fs from 'fs';
 import dotenv from 'dotenv';
 
+dotenv.config();
 const env = dotenv.parse(fs.readFileSync(__dirname + '/../.env'));
 
 const CONFIG = {
@@ -14,6 +15,10 @@ const CONFIG = {
         DB_NAME: env.DB_NAME,
 	DB_PASSWORD: env.DB_PASSWORD,
 	DB_PORT: env.DB_PORT
+    },
+    PROXY: {
+        HTTP_PROXY: env.HTTP_PROXY,
+	HTTPS_PROXY: env.HTTP_PROXY
     },
     CRYPTO: {
         BYBIT: {
