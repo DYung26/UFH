@@ -6,8 +6,8 @@ export const getBybitWalletBalance = async (coin: string, apiKey: string,
 					    apiSecret: string): Promise<string> => {
     const client = new RestClientV5({
         testnet: false,
-        key: apiKey, // 'x29ldFtj3YSiIZOry5',
-        secret: apiSecret, // 'X4Hw2fkWYdhgk7mHXdNVXquhFIZAVnicYbty',
+        key: apiKey,
+        secret: apiSecret,
     });
 
     try {
@@ -24,7 +24,7 @@ export const getBybitWalletBalance = async (coin: string, apiKey: string,
     }
     // return "50";
 };
-// getBybitWalletBalance('BTC', 'x29ldFtj3YSiIZOry5', 'X4Hw2fkWYdhgk7mHXdNVXquhFIZAVnicYbty');
+// getBybitWalletBalance('BTC', '', '');
 /*
 client
     .getWalletBalance({
