@@ -48,12 +48,29 @@ Universal Finance Hub (UFH) is a powerful tool designed to help users manage the
    python main.py
    ```
 
-   To run the compiled executable (if created with PyInstaller):
+   <!--To run the compiled executable (if created with PyInstaller):
 
    ```bash
    ./UFH.exe  # On Windows
    ./UFH      # On Unix-based systems
-   ```
+   ```-->
+
+## Downloading and Using UFH Executable
+
+### Step 1: Download the Executable
+1. Navigate to the [Releases](https://github.com/DYung26/UFH/releases) section of this repository.
+2. Locate the latest release (v1.0.0).
+3. Download the `UFH.exe` file by clicking on it.
+
+### Step 2: Running the Executable
+1. Once the download is complete, locate the `UFH.exe` file in your downloads folder.
+2. Double-click the executable to run the Universal Finance Hub application.
+3. Follow the on-screen instructions to start managing your financial accounts.
+
+### Note
+- Ensure you have the necessary permissions to run executables on your Windows system.
+- For any issues or feedback, please visit the [GitHub Issues](https://github.com/DYung26/UFH/issues) section.
+
 
 ### Setup for Frontend Website
 
