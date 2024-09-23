@@ -20,7 +20,7 @@ export const getBybitWalletBalance = async (coin: string, apiKey: string,
 	return balance;
     } catch (error) {
         console.error('Error fetching Bybit wallet balance:', error);
-	return "NaN";
+	return "0";
     }
     // return "50";
 };

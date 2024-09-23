@@ -18,4 +18,8 @@ export class AccountService implements IAccountService {
     async getAccountByType(userId: string, accountType: string): Promise<ApiKeyAccount | OAuthAccount> {
         return await this.accountDBRepo.getAccountByType(userId, accountType) as ApiKeyAccount | OAuthAccount;
     }
+
+    async fetchUserLinkedAccountsInfo(userId: string): Promise<Array<Object>> {
+        return await this.accountDBRepo.getUserLinkedAccountsByUserId(userId);
+    }
 }

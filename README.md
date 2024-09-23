@@ -109,7 +109,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Screenshot
 
-![UFH Screenshot](path/to/screenshot.png)
+<!--![UFH Screenshot](https://drive.google.com/uc?export=view&id=1aDO8kd46WApZFEotYlgojQO1EUV2B-uy)-->
+<img src="https://drive.google.com/uc?export=view&id=1aDO8kd46WApZFEotYlgojQO1EUV2B-uy" alt="UFH Screenshot" width="400"/>
 
 ---
 

@@ -1,6 +1,7 @@
 import { CustomError } from "@utils/customError";
 import { StatusCodes } from "http-status-codes";
 import { AccountRepository } from "repositories/accountRepository";
+import { getBinanceTotalBalance } from "./bankIntegrations/cryptoExchanges/binance";
 import { getBybitWalletBalance } from "./bankIntegrations/cryptoExchanges/bybit";
 
 export interface IBalanceService {
@@ -21,7 +22,7 @@ export class BalanceService implements IBalanceService {
 
 	if (accountType === "bybit" && this.accountDBRepo.isApiKeyAccount(account)) {
             try {
-                const balance = await getBybitWalletBalance("USDT", account.apiKey, account.apiSecret);
+                const balance = await getBybitWalletBalance("USDT", account.api_key, account.api_secret);
 		console.log("Bybit wallet balance:", balance);
 		return balance;
 	    } catch (error) {
@@ -29,6 +30,17 @@ export class BalanceService implements IBalanceService {
     	        throw new CustomError(
 			'Error fetching Bybit wallet balance',
 			StatusCodes.INTERNAL_SERVER_ERROR);
+	    }
+	} else if (accountType === "binance" && this.accountDBRepo.isApiKeyAccount(account)) {
+            try {
+                const balance = await getBinanceTotalBalance(account.api_key, account.api_secret);
+		console.log("Binance wallet balance:", balance);
+		return balance;
+	    } catch (error) {
+                console.error("Failed to get Binance balance:", error);
+		throw new CustomError(
+                    'Error fetching Binance wallet balance',
+		    StatusCodes.INTERNAL_SERVER_ERROR);
 	    }
 	}
 	throw new CustomError('Unsupported account type', StatusCodes.BAD_REQUEST);
