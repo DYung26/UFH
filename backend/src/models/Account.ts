@@ -1,11 +1,11 @@
 export interface ApiKeyAccount extends LinkedAccount {
-    apiKey: string;
-    apiSecret: string;
+    api_key: string;
+    api_secret: string;
 }
 
 export interface OAuthAccount extends LinkedAccount {
-    accessToken: string;
-    refreshToken?: string;
+    access_token: string;
+    refresh_token?: string;
 }
 
 export enum FinancialPlatform {
@@ -14,7 +14,7 @@ export enum FinancialPlatform {
 }
 
 export interface LinkedAccount {
-    readonly accountType: FinancialPlatform;
-    linkedAt: Date;
-    lastUpdated?: Date;
+    readonly account_type: FinancialPlatform;
+    linked_at: Date;
+    last_updated?: Date;
 }
