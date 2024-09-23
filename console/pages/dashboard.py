@@ -4,7 +4,7 @@ from pages.link import link_account
 from services import logout;
 from pages.profile import profile_page
 
-def dashboard(email, username, linked_banks: list, balance, token, isGuest: bool ):
+def dashboard(email, username, accounts: list, total_balance, token, isGuest: bool ):
     while True:
         clear_terminal()
         display_ufh()
@@ -13,17 +13,17 @@ def dashboard(email, username, linked_banks: list, balance, token, isGuest: bool
             time.sleep(1)
         print("\nWelcome to your dashboard!")
         print(
-f'''                             ==== DASHBOARD ====
+f'''                                         ==== DASHBOARD ====
 USERNAME: {username}            EMAIL: {email}           LINKED BANKS: []
-▪️ Dashboard    [d] |                                  BALANCE: ${balance}
-▪️ Profile      [p] |                                  ACCOUNTS:
-▪️ Transactions [t] |                                      ▪️ {linked_banks[0]} [-]
-▪️ Logout       [l] |                                      ▪️ {linked_banks[1]} [-]
-                                                           ▪️ Link a new bank  [+]
 
-                             ===================
+▪️ Dashboard    [d] |                                                  BALANCE: ${total_balance}
+▪️ Profile      [p] |                                                  ACCOUNTS:
+▪️ Transactions [t] |                                                      ▪️ {accounts[0][0] if len(accounts) > 0 else ""}: {accounts[0][1] if len(accounts) > 0 else ""} [-]
+▪️ Logout       [l] |                                                      ▪️ {accounts[1][0] if len(accounts) > 1 else ""}: {accounts[1][1] if len(accounts) > 1 else ""} [-]
+                                                                           ▪️ Link a new bank  [+]
+                                         ===================
 ''')
-        print("\nEnter the letters in square brackets to navigate the dashboard")
+        print("Enter the letters in square brackets to navigate the dashboard")
         print("\ne.g. d ::: Dashboard | - ::: unlink bank | p ::: profile")
         while True:
             navigate = input(f"\n{username}@UFH> ")
