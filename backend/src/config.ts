@@ -24,6 +24,10 @@ const CONFIG = {
         BYBIT: {
             API_KEY: env.BYBIT_KEY,
 	    API_SECRET: env.BYBIT_SECRET,
+	},
+	BINANCE: {
+            API_KEY: env.BINANCE_KEY,
+	    API_SECRET: env.BINANCE_SECRET,
 	}
     }
 };
