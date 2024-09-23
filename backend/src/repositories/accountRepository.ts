@@ -16,23 +16,23 @@ export class AccountRepository {
 
     async insertAccount(userId: string, accountData: ApiKeyAccount | OAuthAccount): Promise<void> {
         let query = 'INSERT INTO linked_accounts (id, account_type, linked_at';
-	const values = [userId, accountData.accountType, new Date()];
+	const values = [userId, accountData.account_type, new Date()];
 	let valuePlaceholders = '($1, $2, $3';
 
 	if (this.isApiKeyAccount(accountData)) {
             query += ', api_key, api_secret';
-	    values.push(accountData.apiKey, accountData.apiSecret);
+	    values.push(accountData.api_key, accountData.api_secret);
 	    console.log(`***${values}`)
 	    valuePlaceholders += `, $${values.length - 1}, $${values.length}`;
 	}
 
 	if (this.isOAuthAccount(accountData)) {
             query += ', access_token';
-            values.push(accountData.accessToken);
+            values.push(accountData.access_token);
             valuePlaceholders += `, $${values.length}`;
-            if (accountData.refreshToken) {
+            if (accountData.refresh_token) {
                 query += ', refresh_token';
-                values.push(accountData.refreshToken);
+                values.push(accountData.refresh_token);
                 valuePlaceholders += `, $${values.length}`;
             }
         }
@@ -43,11 +43,11 @@ export class AccountRepository {
     }
 
     isApiKeyAccount(account: LinkedAccount): account is ApiKeyAccount {
-        return (account as ApiKeyAccount).apiKey !== undefined && (account as ApiKeyAccount).apiSecret !== undefined;
+        return (account as ApiKeyAccount).api_key !== undefined && (account as ApiKeyAccount).api_secret !== undefined;
     }
 
     isOAuthAccount(account: LinkedAccount): account is OAuthAccount {
-        return (account as OAuthAccount).accessToken !== undefined;
+        return (account as OAuthAccount).access_token !== undefined;
     }
 
     async deleteAccount(accountId: string): Promise<void> {
@@ -60,5 +60,25 @@ export class AccountRepository {
 	const result = await this.db.getPool().query(query, [userId, accountType]);
 	const account = result.rows[0];
         return account as ApiKeyAccount | OAuthAccount;
+    }
+
+    async getUserLinkedAccountsByUserId(userId: string): Promise<Array<Object>> {
+        const query = `
+            SELECT
+                account_type,
+                linked_at,
+                CASE 
+                    WHEN "api_key" IS NOT NULL AND "api_secret" IS NOT NULL 
+                        THEN json_build_object('apiKey', "api_key", 'apiSecret', "api_secret")
+                    WHEN "access_token" IS NOT NULL AND "refresh_token" IS NOT NULL 
+                        THEN json_build_object('accessToken', "access_token", 'refreshToken', "refresh_token")
+                    ELSE NULL
+                END AS credentials
+            FROM linked_accounts
+            WHERE id = $1
+        `;
+	const result = await this.db.getPool().query(query, [userId]);
+	const accounts = result.rows;
+	return accounts as Array<Object>;
     }
 }
