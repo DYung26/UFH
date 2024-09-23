@@ -2,17 +2,17 @@ import express, { Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import hpp from 'hpp';
-import CONFIG from 'config';
+import CONFIG from './config';
 import helmet from 'helmet';
 import cors from 'cors';
-import authRouter from 'routes/authRouter';
+import authRouter from './routes/authRouter';
 // import { authenticateToken } from 'middlewares';
 import { db } from './database';
 import { catchAllErrorHandler, notFoundErrorHandler } from 'middlewares/errorHandlerMiddleware';
 import './cronJobs';
-import accountRouter from 'routes/accountRouter';
-import balanceRouter from 'routes/balanceRouter';
-import 'services/bankIntegrations/cryptoExchanges/bybit';
+import accountRouter from './routes/accountRouter';
+import balanceRouter from './routes/balanceRouter';
+import './services/bankIntegrations/cryptoExchanges/bybit';
 
 const app = express();
 
