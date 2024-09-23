@@ -16,4 +16,10 @@ accountRouter.post(
     expressAsyncHandler(accountController.linkAccount.bind(accountController))
 )
 
+accountRouter.get(
+    '/linked-accounts',
+    authenticateToken,
+    expressAsyncHandler(accountController.getUserLinkedAccounts.bind(accountController))
+)
+
 export default accountRouter;
