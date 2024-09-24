@@ -1,6 +1,6 @@
 import time
 from utils import clear_terminal, display_ufh
-from services import profile, get_balance
+from services import get_account_balance, profile, get_total_balance
 
 def profile_page(token, isGuest):
     clear_terminal()
@@ -10,21 +10,24 @@ def profile_page(token, isGuest):
         time.sleep(1)
         email = "guest@test.com"
         username = "Guest"
-        balance = "Test_$500"
-        linked_banks = ["Bybit", "PayPal"]
+        total_balance = "Test_$500"
+        accounts = [["Bybit", "Test_$250" ], ["PayPal", "Test_$250"]]
     else:
         user = profile(token)
         email = user["data"]["existingUser"]["email"]
         username = user["data"]["existingUser"]["username"]
-        balance = get_balance(token, "bybit")
-        linked_banks = ["", ""]
+        total_balance = get_total_balance(token)
+        accounts = get_account_balance(token)
     print(f'''
 ▪️ email: {email}
+
 ▪️ username: {username}
-▪️ balance: {balance}
+
+▪️ balance: {total_balance}
+
 ▪️ linked accounts:
-        ▪️ {linked_banks[0]} [-]
-        ▪️ {linked_banks[1]} [-]
+        ▪️ {accounts[0][0] if len(accounts) > 0 else ""}: {accounts[0][1] if len(accounts) > 0 else ""} [-]
+        ▪️ {accounts[1][0] if len(accounts) > 1 else ""}: {accounts[1][1] if len(accounts) > 1 else ""} [-]
 ...
 ▪️ Go back    [b]
 ''')

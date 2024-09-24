@@ -9,12 +9,15 @@ def crypto_select(username, token, isGuest):
 ...
 ▪️ Go back    [b]
 ''')
+    account_type = ""
     while True:
         exchange = input(f"\n{username}@UFH> ")
         if exchange == "BB":
+            account_type = "bybit"
             print("ByBit\nSubmit your ByBit API KEY and API SECRET with the following permissions:")
             print("\n.\n.\n.")
         elif exchange == "BN":
+            account_type = "binance"
             print("Binance\nSubmit your Binance API KEY and API_SECRET with the following permissions:")
             print("\n.\n.\n.")
         elif exchange == "b":
@@ -24,7 +27,7 @@ def crypto_select(username, token, isGuest):
         key = input("API KEY: ")
         secret = input("API SECRET: ")
         if not isGuest:
-            link(token, key, secret)
+            link(token, key, secret, account_type)
         print("Linked successfully!")
         if input(f"▪️ Go back    [b]\n\n{username}@UFH> ") == "b":
             break
