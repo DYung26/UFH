@@ -14,7 +14,7 @@ pyperclip==1.8.2
 PyRect==0.2.0
 PyScreeze==0.1.30
 pytweening==1.2.0
-requests==2.32.3
+requests==2.32.4
 rich==13.8.0
 urllib3==2.2.2
 websocket-client==1.8.0
