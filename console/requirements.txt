@@ -16,5 +16,5 @@ PyScreeze==0.1.30
 pytweening==1.2.0
 requests==2.32.4
 rich==13.8.0
-urllib3==2.2.2
+urllib3==2.5.0
 websocket-client==1.8.0
