@@ -30,7 +30,7 @@ Universal Finance Hub (UFH) is a powerful tool designed to help users manage the
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/DYung26/UFH.git
+   git clone https://github.com/DYung26/UFH
    cd UFH
    ```
 
