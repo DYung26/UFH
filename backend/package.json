@@ -3,7 +3,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.5.4",
     "@types/node-cron": "^3.0.11",
-    "axios": "^1.12.2",
+    "axios": "^1.13.5",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^2.4.3",
     "bybit-api": "^3.10.18",
